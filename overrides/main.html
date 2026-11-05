@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block announce -%}
+{%- set r = config.extra.release -%}
+{%- if r and r.version -%}
+<div class="release-bar">
+  <span class="release-bar__item"><span class="release-bar__label">版本</span><span class="release-bar__value">{{ r.version }}</span></span>
+  {%- if r.date %}<span class="release-bar__item"><span class="release-bar__label">发布</span><span class="release-bar__value">{{ r.date }}</span></span>{% endif -%}
+  {%- if r.author %}<span class="release-bar__item is-muted">{{ r.author }}</span>{% endif -%}
+  {%- if r.message %}<span class="release-bar__item is-muted">{{ r.message }}</span>{% endif -%}
+</div>
+{%- endif -%}
+{%- endblock %}

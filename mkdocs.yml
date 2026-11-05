@@ -1,0 +1,161 @@
+# =============================================================================
+# 运维手册 · MkDocs 配置
+# 主题文档: https://squidfunk.github.io/mkdocs-material/setup/
+# =============================================================================
+
+site_name: 运维手册
+site_description: Linux、数据库与中间件的安装、配置、备份与故障处理实践
+site_author: 运维团队
+# 生产环境构建时由 CI / release.sh 通过环境变量 SITE_URL 注入，本地留空即可
+site_url: !ENV [SITE_URL, ""]
+copyright: 内部技术文档 · 仅供内部学习与运维参考
+
+# -----------------------------------------------------------------------------
+# 主题
+# -----------------------------------------------------------------------------
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+
+  # 关闭 Google Fonts 远程字体：国内网络不可达会阻塞首屏，改用系统字体栈（见 extra.css）
+  font: false
+
+  logo: pic/logo.png
+  favicon: pic/logo.png
+  icon:
+    logo: material/book-open-page-variant
+
+  palette:
+    # 浅色（跟随系统）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    # 深色（跟随系统）
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+  features:
+    # 导航
+    - navigation.instant            # 单页应用式加载，无整页刷新
+    - navigation.instant.progress   # 加载进度条
+    - navigation.tracking           # 地址栏同步当前锚点
+    - navigation.tabs               # 一级目录提升为顶部标签栏
+    - navigation.sections           # 侧边栏按分组展示
+    - navigation.indexes            # 分组首页（index.md）
+    - navigation.top                # 回到顶部
+    - navigation.footer             # 上一页 / 下一页
+    - toc.follow                    # 目录跟随滚动
+    # 搜索
+    - search.suggest
+    - search.highlight
+    - search.share
+    # 内容
+    - content.code.copy             # 代码块一键复制
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link             # 同页多个标签组联动
+    - content.tooltips
+    # 其他
+    - announce.dismiss
+
+# -----------------------------------------------------------------------------
+# Markdown 扩展
+# -----------------------------------------------------------------------------
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html                      # 首页卡片栅格依赖
+  - tables
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# -----------------------------------------------------------------------------
+# 插件
+# -----------------------------------------------------------------------------
+plugins:
+  - search:
+      lang: [zh, en]
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\\.(?!\d)'
+  - table-reader                    # 直接渲染 csv 表格
+  - print-site:                     # 整站合并为一页，便于导出 / 打印 PDF
+      add_to_navigation: true
+      print_page_title: 整本导出
+      add_cover_page: true
+      add_table_of_contents: true
+      toc_title: 目录
+      toc_depth: 2
+      enumerate_headings: false
+
+# -----------------------------------------------------------------------------
+# 构建校验：遇到坏链接 / 缺失页面直接告警（CI 可加 --strict 转成失败）
+# -----------------------------------------------------------------------------
+validation:
+  omitted_files: warn
+  absolute_links: relative_to_docs
+  unrecognized_links: warn
+  anchors: warn
+
+# -----------------------------------------------------------------------------
+# 自定义变量
+# -----------------------------------------------------------------------------
+extra:
+  # 发布信息，由 release.sh / CI 通过环境变量注入；未注入时顶部公告栏自动隐藏
+  release:
+    version: !ENV [GIT_COMMIT_HASH, ""]
+    date: !ENV [GIT_COMMIT_DATE, ""]
+    author: !ENV [GIT_COMMIT_AUTHOR, ""]
+    message: !ENV [GIT_COMMIT_MESSAGE, ""]
+
+extra_css:
+  - stylesheets/extra.css
+
+# -----------------------------------------------------------------------------
+# 导航
+# -----------------------------------------------------------------------------
+nav:
+  - Home: index.md
+  - Kubernetes:
+      - 容器基础:
+          - docker: k8s/docker.md
+          - containerd: k8s/containerd.md
+  - Mirrors:
+      - Rocky Linux: huawei/rocky-linux.md
+  - About: about.md
+
+not_in_nav: |
+  /tekton.md
