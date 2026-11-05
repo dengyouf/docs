@@ -1,0 +1,1253 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Linux、数据库与中间件的安装、配置、备份与故障处理实践">
+      
+      
+        <meta name="author" content="运维团队">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../pic/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>整本导出 - 运维手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#index" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="运维手册" class="md-header__button md-logo" aria-label="运维手册" data-md-component="logo">
+      
+  <img src="../pic/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            运维手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              整本导出
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../k8s/docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Kubernetes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../huawei/rocky-linux.md" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Mirrors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.md" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  整本导出
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="运维手册" class="md-nav__button md-logo" aria-label="运维手册" data-md-component="logo">
+      
+  <img src="../pic/logo.png" alt="logo">
+
+    </a>
+    运维手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kubernetes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    容器基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    容器基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/containerd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    containerd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mirrors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mirrors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huawei/rocky-linux.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rocky Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整本导出
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整本导出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kubernetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="容器基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k8s-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8s-containerd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        containerd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mirrors
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kubernetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="容器基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k8s-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8s-containerd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        containerd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mirrors
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div id="print-site-page" class="print-site-enumerate-figures">
+        <section id="print-site-cover-page">
+            
+<div>
+
+    
+        <h1>运维手册</h1>
+    
+
+</div>
+
+
+<table>
+
+    
+    <tr>
+        <td>Description</td>
+        <td>Linux、数据库与中间件的安装、配置、备份与故障处理实践</td>
+    </tr>
+    
+
+    
+    <tr>
+        <td>Author(s)</td>
+        <td>运维团队</td>
+    </tr>
+    
+
+    
+
+    
+    <tr>
+        <td>Copyright</td>
+        <td>内部技术文档 · 仅供内部学习与运维参考</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+        </section>
+        
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="2">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>目录</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="index" heading-number="1"><div class="ops-hero">
+<h1 id="index-_1">运维手册<a class="headerlink" href="#index-_1" title="Permanent link">#</a></h1>
+</div></section>
+                    <section class='print-page md-section' id='section-2' heading-number='2'>
+                        <h1>Kubernetes<a class='headerlink' href='#section-2' title='Permanent link'></a>
+                        </h1>
+                    
+                    <section class='print-page md-section' id='section-2-1' heading-number='2.1'>
+                        <h1>容器基础<a class='headerlink' href='#section-2-1' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="k8s-docker" heading-number="2.1.1"><h1 id="k8s-docker-docker">Docker<a class="headerlink" href="#k8s-docker-docker" title="Permanent link">#</a></h1>
+<p>Docker 是一个开源的容器化引擎。 可以帮助开发者将应用程序以及它运行所需的所有依赖（环境、库、配置文件），打包成一个轻量级、可移植的“集装箱”（Container），从而实现“一次构建，处处运行”。其通过容器化的应用环境，解决了环境管理的复杂问题，让应用的部署和运维变得更加简单和高效。。</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 一次构建到处运行</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 更强的一致性</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 可移植性强</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 提升资源利用率</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 创建和启动速度快</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 更细粒度的隔离性</li>
+</ul>
+<h2 id="k8s-docker-_1">安装手册<a class="headerlink" href="#k8s-docker-_1" title="Permanent link">#</a></h2>
+<blockquote>
+<p><a href="https://docs.docker.com/engine/install/">官网</a>: <code>https://docs.docker.com/engine/install/</code></p>
+</blockquote>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="k8s-docker-__tabbed_1_1" name="k8s-docker-__tabbed_1" type="radio" /><input id="k8s-docker-__tabbed_1_2" name="k8s-docker-__tabbed_1" type="radio" /><input id="k8s-docker-__tabbed_1_3" name="k8s-docker-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="k8s-docker-__tabbed_1_1">在线安装</label><label for="k8s-docker-__tabbed_1_2">离线安装</label><label for="k8s-docker-__tabbed_1_3">卸载</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>在安装 Docker Engine 之前，需要卸载任何冲突的软件包,然后安装依赖
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#k8s-docker-__codelineno-0-1"></a>sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc docker-buildx podman-docker containerd runc | cut -f1)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#k8s-docker-__codelineno-0-2"></a>sudo apt install -y apt-transport-https ca-certificates curl gnupg software-properties-common
+</span></code></pre></div></li>
+<li>下载并保存密钥
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#k8s-docker-__codelineno-1-1"></a>install -m 0755 -d /etc/apt/keyrings
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#k8s-docker-__codelineno-1-2"></a>curl -fsSL https://mirrors.huaweicloud.com/docker-ce/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#k8s-docker-__codelineno-1-3"></a>chmod a+r /etc/apt/keyrings/docker.asc
+</span></code></pre></div></li>
+<li>配置DEB822格式的源文件，添加软件仓库
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#k8s-docker-__codelineno-2-1"></a>tee /etc/apt/sources.list.d/docker.sources &lt;&lt; EOF
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#k8s-docker-__codelineno-2-2"></a>Types: deb
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#k8s-docker-__codelineno-2-3"></a>URIs: https://mirrors.huaweicloud.com/docker-ce/linux/ubuntu
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#k8s-docker-__codelineno-2-4"></a>Suites: $(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME")
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#k8s-docker-__codelineno-2-5"></a>Components: stable
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#k8s-docker-__codelineno-2-6"></a>Signed-By: /etc/apt/keyrings/docker.asc
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#k8s-docker-__codelineno-2-7"></a>EOF
+</span></code></pre></div></li>
+<li>更新索引文件并安装指定版本
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#k8s-docker-__codelineno-3-1"></a>apt update
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#k8s-docker-__codelineno-3-2"></a>apt list --all-versions docker-ce
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#k8s-docker-__codelineno-3-3"></a>VERSION_STRING=5:29.8.2-1~ubuntu.24.04~noble
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#k8s-docker-__codelineno-3-4"></a>sudo apt install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+</span></code></pre></div></li>
+<li>配置docker
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#k8s-docker-__codelineno-4-1"></a>mkdir /etc/docker
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#k8s-docker-__codelineno-4-2"></a>tee /etc/docker/daemon.json &lt;&lt; EOF
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#k8s-docker-__codelineno-4-3"></a>{
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#k8s-docker-__codelineno-4-4"></a>  "log-driver": "json-file",
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#k8s-docker-__codelineno-4-5"></a>  "log-opts": {
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#k8s-docker-__codelineno-4-6"></a>    "max-size": "10m",
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#k8s-docker-__codelineno-4-7"></a>    "max-file": "3"
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#k8s-docker-__codelineno-4-8"></a>  },
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#k8s-docker-__codelineno-4-9"></a>  "data-root": "/data/docker"
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#k8s-docker-__codelineno-4-10"></a>}
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#k8s-docker-__codelineno-4-11"></a>EOF
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#k8s-docker-__codelineno-4-12"></a>mkdir -p /etc/containerd
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#k8s-docker-__codelineno-4-13"></a>containerd config default | sudo tee /etc/containerd/config.toml
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#k8s-docker-__codelineno-4-14"></a>sed -i "s@root = '/var/lib/containerd'@root = '/data/containerd'@g" /etc/containerd/config.toml
+</span></code></pre></div></li>
+<li>启动并设置服务开机自启动
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#k8s-docker-__codelineno-5-1"></a>sudo systemctl stop docker docker.socket containerd
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#k8s-docker-__codelineno-5-2"></a>sudo systemctl enable docker --now
+</span></code></pre></div></li>
+<li>迁移已有数据
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#k8s-docker-__codelineno-6-1"></a>sudo systemctl stop docker docker.socket containerd
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#k8s-docker-__codelineno-6-2"></a>sudo rsync -aP /var/lib/containerd/ /data/containerd/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#k8s-docker-__codelineno-6-3"></a>sudo systemctl start docker 
+</span></code></pre></div></li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>下载二进制文件
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#k8s-docker-__codelineno-7-1"></a>wget https://download.docker.com/linux/static/stable/aarch64/docker-29.8.0.tgz
+</span></code></pre></div></li>
+<li>解压并移动到可执行文件路径上
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#k8s-docker-__codelineno-8-1"></a>tar<span class="w"> </span>-xf<span class="w"> </span>docker-29.8.0.tgz
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#k8s-docker-__codelineno-8-2"></a>cp<span class="w"> </span>docker/*<span class="w"> </span>/usr/bin/
+</span></code></pre></div></li>
+<li>
+<p>配置docker
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#k8s-docker-__codelineno-9-1"></a>mkdir<span class="w"> </span>/etc/docker
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#k8s-docker-__codelineno-9-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#k8s-docker-__codelineno-9-3"></a><span class="s">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#k8s-docker-__codelineno-9-4"></a><span class="s">    "exec-opts": ["native.cgroupdriver=systemd"],</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#k8s-docker-__codelineno-9-5"></a><span class="s">    "max-concurrent-downloads": 10,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#k8s-docker-__codelineno-9-6"></a><span class="s">    "max-concurrent-uploads": 10,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#k8s-docker-__codelineno-9-7"></a><span class="s">    "log-driver": "json-file",</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#k8s-docker-__codelineno-9-8"></a><span class="s">    "storage-driver": "overlay2",</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#k8s-docker-__codelineno-9-9"></a><span class="s">    "data-root": "/data/docker",</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#k8s-docker-__codelineno-9-10"></a><span class="s">    "log-opts":{</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#k8s-docker-__codelineno-9-11"></a><span class="s">        "max-size": "300m",</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#k8s-docker-__codelineno-9-12"></a><span class="s">        "max-file": "2" </span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#k8s-docker-__codelineno-9-13"></a><span class="s">    },</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#k8s-docker-__codelineno-9-14"></a><span class="s">    "registry-mirrors": ["https://docker.m.daocloud.io"],</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#k8s-docker-__codelineno-9-15"></a><span class="s">    "live-restore": true</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#k8s-docker-__codelineno-9-16"></a><span class="s">}</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#k8s-docker-__codelineno-9-17"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>提供启动脚本并启动
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#k8s-docker-__codelineno-10-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/usr/lib/systemd/system/docker.service<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#k8s-docker-__codelineno-10-2"></a><span class="s">[Unit]</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#k8s-docker-__codelineno-10-3"></a><span class="s">Description=Docker Application Container Engine</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#k8s-docker-__codelineno-10-4"></a><span class="s">Documentation=https://docs.docker.com</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#k8s-docker-__codelineno-10-5"></a><span class="s">After=network-online.target firewalld.service</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#k8s-docker-__codelineno-10-6"></a><span class="s">Wants=network-online.target</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#k8s-docker-__codelineno-10-7"></a><span class="s">[Service]</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#k8s-docker-__codelineno-10-8"></a><span class="s">Type=notify</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#k8s-docker-__codelineno-10-9"></a><span class="s">ExecStart=/usr/bin/dockerd</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#k8s-docker-__codelineno-10-10"></a><span class="s">ExecReload=/bin/kill -s HUP $MAINPID</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#k8s-docker-__codelineno-10-11"></a><span class="s">LimitNOFILE=infinity</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#k8s-docker-__codelineno-10-12"></a><span class="s">LimitNPROC=infinity</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#k8s-docker-__codelineno-10-13"></a><span class="s">LimitCORE=infinity</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#k8s-docker-__codelineno-10-14"></a><span class="s">TimeoutStartSec=0</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#k8s-docker-__codelineno-10-15"></a><span class="s">Delegate=yes</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#k8s-docker-__codelineno-10-16"></a><span class="s">KillMode=process</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#k8s-docker-__codelineno-10-17"></a><span class="s">Restart=on-failure</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#k8s-docker-__codelineno-10-18"></a><span class="s">StartLimitBurst=3</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#k8s-docker-__codelineno-10-19"></a><span class="s">StartLimitInterval=60s</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#k8s-docker-__codelineno-10-20"></a><span class="s">[Install]</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#k8s-docker-__codelineno-10-21"></a><span class="s">WantedBy=multi-user.target</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#k8s-docker-__codelineno-10-22"></a><span class="s">EOF</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#k8s-docker-__codelineno-10-23"></a>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#k8s-docker-__codelineno-10-24"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker<span class="w"> </span>--now
+</span></code></pre></div></p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>卸载 Docker Engine、CLI、containerd 和 Docker Compose 软件包
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#k8s-docker-__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin<span class="w"> </span>docker-ce-rootless-extras
+</span></code></pre></div></li>
+<li>主机上的镜像、容器、卷或自定义配置文件不会自动删除。要删除所有镜像、容器和卷
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#k8s-docker-__codelineno-12-1"></a>sudo rm -rf /data/docker
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#k8s-docker-__codelineno-12-2"></a>sudo rm -rf /data/containerd
+</span></code></pre></div></li>
+<li>删除源列表和密钥环
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#k8s-docker-__codelineno-13-1"></a>sudo rm /etc/apt/sources.list.d/docker.sources
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#k8s-docker-__codelineno-13-2"></a>sudo rm /etc/apt/keyrings/docker.asc
+</span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div></section><section class="print-page" id="k8s-containerd" heading-number="2.1.2"><div class="ops-hero">
+<h1 id="k8s-containerd-_1">容器基础<a class="headerlink" href="#k8s-containerd-_1" title="Permanent link">#</a></h1>
+</div></section></section></section>
+                    <section class='print-page md-section' id='section-3' heading-number='3'>
+                        <h1>Mirrors<a class='headerlink' href='#section-3' title='Permanent link'></a>
+                        </h1>
+                    </section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+
+                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-increment: counter-index-2 }
+            
+.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+.print-site-enumerate-headings #section-2-1 > h1:before { content: '2.1 ' }
+.print-site-enumerate-headings #k8s-docker > h1:before { content: '2.1.1 ' }
+
+.print-site-enumerate-headings #k8s-containerd > h1:before { content: '2.1.2 ' }
+
+.print-site-enumerate-headings #section-3 > h1:before { content: '3 ' }</style>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      内部技术文档 · 仅供内部学习与运维参考
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.select", "content.code.annotate", "content.tabs.link", "content.tooltips", "announce.dismiss"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
