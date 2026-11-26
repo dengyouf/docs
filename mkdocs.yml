@@ -166,9 +166,16 @@ nav:
           - kubeadm: 
               -  v1.30.12: "k8s/kubeadm-v1.30.12.md"
               -  v1.35.7: "k8s/kubeadm-v1.35.7.md"
+      - Helm: k8s/00-helm.md
       - MetalLB: k8s/metallb.md
+      - Ingress:
+          # - nginx-ingress: k8s/nginx-ingress.md
+          - traefik-ingress: k8s/00-traefik-ingress.md
+      - Gateway:
+          - envoygateway: k8s/00-envoygateway.md
       - Storage:
           - nfs-client: "k8s/00-nfs-subdir-external-provisioner.md"
+      - Kube-prometheus: k8s/00-kube-prometheus.md
       - GitOps:
           - Tekton: k8s/00-tekton.md
           - ArgoCD: k8s/argocd.md
